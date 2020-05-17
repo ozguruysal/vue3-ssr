@@ -30,6 +30,7 @@ async function render(bundleRenderer, context, req, res) {
     );
 
     if (!isProd) {
+      // eslint-disable-next-line no-console
       console.log(green(`Whole request took: ${Date.now() - now}ms`));
     }
   } catch (err) {

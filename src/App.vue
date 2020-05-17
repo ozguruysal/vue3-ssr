@@ -1,7 +1,9 @@
 <template>
-  <component :is="layout">
-    <router-view />
-  </component>
+  <div class="antialiased text-gray-700">
+    <component :is="layout">
+      <router-view />
+    </component>
+  </div>
 </template>
 
 <script>
@@ -28,3 +30,7 @@ export default defineComponent({
   },
 });
 </script>
+
+<style>
+@import "./assets/styles/main.css";
+</style>
