@@ -1,5 +1,7 @@
 <template>
-  <h1>This is an about page with dummy content</h1>
+  <h1 class="mb-4 text-2xl font-semibold text-gray-900">
+    This is an about page with dummy content
+  </h1>
 
   <p>
     Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempora, est at

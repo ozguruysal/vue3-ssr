@@ -1,6 +1,8 @@
 <template>
   <div class="home">
-    <p>This app is server side rendered!</p>
+    <h1 class="mb-4 text-2xl font-semibold text-gray-900">
+      Vue 3 Server Side Rendering
+    </h1>
     <app-counter />
   </div>
 </template>

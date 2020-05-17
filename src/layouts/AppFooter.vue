@@ -1,5 +1,7 @@
 <template>
-  <footer class="site-footer">
+  <footer
+    class="flex items-center justify-center h-12 text-sm text-center border-t border-gray-200"
+  >
     <p>
       &copy; {{ currentYear }} &middot;
       <a href="https://ozguruys.al">Özgür Uysal</a>

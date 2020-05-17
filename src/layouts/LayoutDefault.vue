@@ -1,11 +1,13 @@
 <template>
-  <app-header />
+  <div class="flex flex-col min-h-screen">
+    <app-header />
 
-  <div>
-    <slot />
+    <div class="flex-1 w-full max-w-screen-xl px-5 py-6 mx-auto">
+      <slot />
+    </div>
+
+    <app-footer class="px-5" />
   </div>
-
-  <app-footer />
 </template>
 
 <script>
