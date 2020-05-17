@@ -2,6 +2,7 @@ const path = require("path");
 const { VueLoaderPlugin } = require("vue-loader");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const FriendlyErrorsWebpackPlugin = require("friendly-errors-webpack-plugin");
 
 function resolve(dir) {
   return path.join(__dirname, "../", dir);
@@ -67,7 +68,13 @@ const baseConfig = {
             canPrint: true,
           }),
         ]
-      : []),
+      : [
+          new FriendlyErrorsWebpackPlugin({
+            compilationSuccessInfo: {
+              messages: ["Your app is running here http://localhost:8080"],
+            },
+          }),
+        ]),
   ],
 };
 
