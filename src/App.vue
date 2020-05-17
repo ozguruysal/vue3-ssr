@@ -24,7 +24,7 @@ export default defineComponent({
 
     return {
       layout,
-    }
-  }
-})
+    };
+  },
+});
 </script>

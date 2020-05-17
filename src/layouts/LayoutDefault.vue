@@ -18,7 +18,7 @@ export default defineComponent({
 
   components: {
     AppHeader,
-    AppFooter
-  }
+    AppFooter,
+  },
 });
 </script>

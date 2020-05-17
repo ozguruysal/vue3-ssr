@@ -1,6 +1,8 @@
 const Home = () => import(/* webpackChunkName: "about" */ "../views/Home.vue");
-const About = () => import(/* webpackChunkName: "about" */ "../views/About.vue");
-const Blank = () => import(/* webpackChunkName: "blank" */ "../views/Blank.vue");
+const About = () =>
+  import(/* webpackChunkName: "about" */ "../views/About.vue");
+const Blank = () =>
+  import(/* webpackChunkName: "blank" */ "../views/Blank.vue");
 
 export const routes = [
   {

@@ -1,4 +1,4 @@
-const chalk = require("chalk");
+const { red } = require("chalk");
 
 function errorHandler(err, req, res) {
   if (err.url) {
@@ -9,8 +9,8 @@ function errorHandler(err, req, res) {
     // Render Error Page or Redirect
     res.status(500).send("500 | Internal Server Error");
 
-    console.error(chalk.red(`error during render : ${req.url}`));
-    console.error(chalk.red(err.stack));
+    console.error(red(`error during render : ${req.url}`));
+    console.error(red(err.stack));
   }
 }
 

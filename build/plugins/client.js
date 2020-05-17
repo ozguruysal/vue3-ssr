@@ -10,7 +10,7 @@ class VueSSRClientPlugin {
       {
         filename: "vue-ssr-client-manifest.json",
       },
-      options
+      options,
     );
   }
 
@@ -24,7 +24,7 @@ class VueSSRClientPlugin {
         Object.keys(stats.entrypoints)
           .map((name) => stats.entrypoints[name].assets)
           .reduce((assets, all) => all.concat(assets), [])
-          .filter((file) => isJS(file) || isCSS(file))
+          .filter((file) => isJS(file) || isCSS(file)),
       );
 
       const asyncFiles = allFiles
@@ -53,7 +53,7 @@ class VueSSRClientPlugin {
           }
           const id = m.identifier.replace(/\s\w+$/, ""); // remove appended hash
           const files = (manifest.modules[hash(id)] = chunk.files.map(
-            fileToIndex
+            fileToIndex,
           ));
           // find all asset modules associated with the same chunk
           assetModules.forEach((m) => {

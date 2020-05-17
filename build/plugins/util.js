@@ -21,7 +21,7 @@ const validate = (compiler) => {
   if (!compiler.options.externals) {
     tip(
       "It is recommended to externalize dependencies in the server build for " +
-        "better build performance."
+        "better build performance.",
     );
   }
 };

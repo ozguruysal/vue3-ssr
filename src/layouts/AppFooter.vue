@@ -17,8 +17,8 @@ export default defineComponent({
     const currentYear = computed(() => new Date().getFullYear());
 
     return {
-      currentYear
+      currentYear,
     };
-  }
+  },
 });
 </script>

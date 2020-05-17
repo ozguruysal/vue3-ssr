@@ -83,7 +83,7 @@ const setupDevServer = (app, cb) => {
     }
 
     clientManifest = JSON.parse(
-      readFile(webpackDevMiddleware.fileSystem, "vue-ssr-client-manifest.json")
+      readFile(webpackDevMiddleware.fileSystem, "vue-ssr-client-manifest.json"),
     );
 
     update();

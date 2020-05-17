@@ -1,10 +1,9 @@
+/* eslint-disable no-useless-catch */
 import { initApp } from "./main";
 
 export default async (context) => {
   try {
     const { app, router } = initApp();
-
-    console.log(context.req.url)
 
     router.push(context.req.url);
 

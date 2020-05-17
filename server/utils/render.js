@@ -1,4 +1,4 @@
-const chalk = require("chalk");
+const { green } = require("chalk");
 const { errorHandler } = require("./errorHandler");
 
 const isProd = process.env.NODE_ENV === "production";
@@ -30,7 +30,7 @@ async function render(bundleRenderer, context, req, res) {
     );
 
     if (!isProd) {
-      console.log(chalk.green(`Whole request took: ${Date.now() - now}ms`));
+      console.log(green(`Whole request took: ${Date.now() - now}ms`));
     }
   } catch (err) {
     errorHandler(err, req, res);
