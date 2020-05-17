@@ -14,17 +14,17 @@
     "build:server": "cross-env NODE_ENV=production webpack --config build/webpack.server.js --hide-modules"
   },
   "dependencies": {
-    "@vue/server-renderer": "^3.0.0-beta.12",
+    "@vue/server-renderer": "^3.0.0-beta.13",
     "compression": "^1.7.4",
     "express": "^4.17.1",
     "serve-favicon": "^2.5.0",
-    "vue": "^3.0.0-beta.12",
+    "vue": "^3.0.0-beta.13",
     "vue-bundle-renderer": "^0.0.3",
     "vue-router": "^4.0.0-alpha.11"
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",
-    "@vue/compiler-sfc": "^3.0.0-beta.12",
+    "@vue/compiler-sfc": "^3.0.0-beta.13",
     "babel-loader": "^8.1.0",
     "chalk": "^4.0.0",
     "cross-env": "^7.0.2",
