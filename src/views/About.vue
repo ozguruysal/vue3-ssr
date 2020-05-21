@@ -17,3 +17,9 @@ export default defineComponent({
   name: "About",
 });
 </script>
+
+<style scoped>
+h1 {
+  @apply text-teal-500;
+}
+</style>

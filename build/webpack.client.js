@@ -1,10 +1,12 @@
 const webpack = require("webpack");
 const merge = require("webpack-merge");
 const { VueSSRClientPlugin } = require("./plugins/client");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
-const baseConfig = require("./webpack.base");
+const { baseConfig, isProd } = require("./webpack.base");
 
-module.exports = merge(baseConfig, {
+const clientConfig = merge(baseConfig, {
   entry: {
     app: "./src/entry-client.js",
   },
@@ -34,3 +36,52 @@ module.exports = merge(baseConfig, {
     new VueSSRClientPlugin(),
   ],
 });
+
+function initCssConfig() {
+  clientConfig.optimization.splitChunks.cacheGroups = {
+    styles: {
+      name: "styles",
+      test: (m) => m.constructor.name === "CssModule",
+      chunks: "all",
+      enforce: true,
+    },
+  };
+
+  clientConfig.module.rules.push({
+    test: /\.css$/,
+    use: [
+      {
+        loader: MiniCssExtractPlugin.loader,
+        options: {
+          hmr: !isProd,
+          reloadAll: true,
+        },
+      },
+      "css-loader",
+      "postcss-loader",
+    ],
+  });
+
+  clientConfig.plugins.push(
+    new MiniCssExtractPlugin({
+      filename: isProd ? "css/[name].[contenthash].css" : "css/[name].css",
+    }),
+  );
+
+  if (isProd) {
+    clientConfig.plugins.push(
+      new OptimizeCssAssetsPlugin({
+        assetNameRegExp: /\.css$/g,
+        cssProcessor: require("cssnano"),
+        cssProcessorOptions: {
+          preset: ["default"],
+        },
+        canPrint: true,
+      }),
+    );
+  }
+}
+
+initCssConfig();
+
+module.exports = clientConfig;

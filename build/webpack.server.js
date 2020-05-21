@@ -3,7 +3,7 @@ const merge = require("webpack-merge");
 const nodeExternals = require("webpack-node-externals");
 const { VueSSRServerPlugin } = require("./plugins/server");
 
-const baseConfig = require("./webpack.base");
+const { baseConfig } = require("./webpack.base");
 
 module.exports = merge(baseConfig, {
   entry: "./src/entry-server.js",
@@ -19,11 +19,18 @@ module.exports = merge(baseConfig, {
   devtool: "source-map",
 
   externals: nodeExternals({
-    // do not externalize dependencies that need to be processed by webpack.
-    // you can add more file types here e.g. raw *.vue files
-    // you should also whitelist deps that modifies `global` (e.g. polyfills)
-    whitelist: [/\.css$/, /\?vue&type=style/],
+    whitelist: [/\.css$/],
   }),
+
+  module: {
+    rules: [
+      // We are just ignoring css during server build
+      {
+        test: /\.css$/,
+        use: "null-loader",
+      },
+    ],
+  },
 
   plugins: [
     new webpack.DefinePlugin({

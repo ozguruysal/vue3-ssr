@@ -1,7 +1,5 @@
 const path = require("path");
 const { VueLoaderPlugin } = require("vue-loader");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const FriendlyErrorsWebpackPlugin = require("friendly-errors-webpack-plugin");
 
 function resolve(dir) {
@@ -54,20 +52,8 @@ const baseConfig = {
 
   plugins: [
     new VueLoaderPlugin(),
-    new MiniCssExtractPlugin({
-      filename: isProd ? "css/[name].[contenthash].css" : "css/[name].css",
-    }),
     ...(isProd
-      ? [
-          new OptimizeCssAssetsPlugin({
-            assetNameRegExp: /\.css$/g,
-            cssProcessor: require("cssnano"),
-            cssProcessorOptions: {
-              preset: ["default"],
-            },
-            canPrint: true,
-          }),
-        ]
+      ? []
       : [
           new FriendlyErrorsWebpackPlugin({
             compilationSuccessInfo: {
@@ -78,22 +64,4 @@ const baseConfig = {
   ],
 };
 
-function buildCssRules() {
-  const rule = {
-    test: /\.css$/,
-  };
-
-  rule.oneOf = [
-    {
-      test: resolve("./src/App.vue"),
-      use: [MiniCssExtractPlugin.loader, "css-loader", "postcss-loader"],
-    },
-    { use: ["css-loader", "postcss-loader"] },
-  ];
-
-  baseConfig.module.rules.push(rule);
-}
-
-buildCssRules();
-
-module.exports = baseConfig;
+module.exports = { baseConfig, isProd };

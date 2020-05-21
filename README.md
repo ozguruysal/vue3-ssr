@@ -19,3 +19,7 @@ You can run the following scripts with `yarn` or `npm` like `yarn install`
 ## Linting
 
 I use [Prettier](https://prettier.io/), [ESlint](https://eslint.org/), and [eslint-plugin-vue](https://eslint.vuejs.org/) with `vue3-essential` settings. You can edit `.eslintrc.js` to edit settings to your personal preference.
+
+## CSS
+
+All CSS will be extracted into a single file. Using [Tailwind CSS](https://github.com/tailwindcss/tailwindcss), you're not supposed to be writing a lot of CSS, so splitting stylesheets is not required. If you don't want to use [Tailwind CSS](https://github.com/tailwindcss/tailwindcss), you'll need to update webpack configs.
