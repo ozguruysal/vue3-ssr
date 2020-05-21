@@ -9,10 +9,9 @@ async function render(bundleRenderer, context, req, res) {
   res.setHeader("Content-Type", "text/html");
 
   try {
-    const html = await bundleRenderer.renderToString(context);
+    const content = await bundleRenderer.renderToString(context);
 
-    res.send(
-      `
+    const html = `
 <!DOCTYPE html>
 <html>
   <head>
@@ -21,13 +20,13 @@ async function render(bundleRenderer, context, req, res) {
     <title>Hello Vue 3</title>
   </head>
   <body>
-    <div id="app">${html}</div>
-
+    <div id="app">${content}</div>
     ${context.renderScripts()}
   </body>
-</html>
-    `.trim(),
-    );
+</html>  
+    `.trim();
+
+    res.send(html);
 
     if (!isProd) {
       // eslint-disable-next-line no-console
